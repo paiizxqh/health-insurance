@@ -25,7 +25,7 @@ The U.S. health insurance system lacks transparency in premium assessment, makin
 - **Data Analysis & Model Development**: Python, Pandas, NumPy, Scikit-learn
 - **Data Visualization**: Matplotlib, Seaborn
 - **Web Development**: React, HTML/CSS/JavaScript
-- **Frontend Framework**: Bootstrap or Tailwind CSS
+- **Frontend Framework**: Bootstrap
 - **Version Control & Deployment**: Git, GitHub, GitHub Pages
 - **Development Tools**: Visual Studio Code, Jupyter Notebook
 
@@ -33,7 +33,7 @@ The U.S. health insurance system lacks transparency in premium assessment, makin
 
 The project uses the "US Health Insurance Dataset" containing 1,338 records with the following features:
 - Age
-- Sex
+- Gender
 - BMI (Body Mass Index)
 - Number of Children
 - Smoking Status
