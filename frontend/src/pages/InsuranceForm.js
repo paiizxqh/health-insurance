@@ -58,7 +58,7 @@ export function InsuranceForm() {
     console.log('Data submit :',formData);
     try {
       const response = await axios.post(
-        "http://localhost:5000/predict",
+        "https://health-insurance-backend.onrender.com",
         formData
       );
       console.log('Response :',response);
