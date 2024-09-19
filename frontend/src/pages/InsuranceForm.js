@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/InsuranceForm.css";
 import axios from "axios";
@@ -10,10 +10,45 @@ export function InsuranceForm() {
     smoker: "",
     region: "",
     bmi: "",
+    height: "",
+    weight: "",
   });
 
   const [result, setResult] = useState(null);
+  const [bmicheck, setBmicheck] = useState(null);
+  const [displayResult, setDisplayResult] = useState(0);
 
+  useEffect(() => {
+    if (formData.height && formData.weight) {
+      const heightInMeters = formData.height / 100;
+      const bmiValue = (formData.weight / (heightInMeters * heightInMeters)).toFixed(2); // คำนวณ BMI
+      setBmicheck(bmiValue);
+      setFormData((prevFormData) => ({ ...prevFormData, bmi: bmiValue })); // อัปเดตค่า BMI ใน formData
+    }
+  }, [formData.height, formData.weight]);
+
+  useEffect(() => {
+    // เมื่อมีผลลัพธ์ให้แสดงผลแบบค่อยๆ เพิ่มขึ้น
+    if (result) {
+      let start = 0;
+      const end = parseFloat(result); // แปลงผลลัพธ์ให้เป็นตัวเลข
+
+      if (start !== end) {
+        let incrementTime = 10; // ความเร็วของแอนิเมชัน (ค่าน้อยลงคือเร็วขึ้น)
+        let step = (end - start) / 100; // แบ่งความต่างออกเป็น 100 ขั้น
+
+        let timer = setInterval(() => {
+          start += step;
+          if (start >= end) {
+            start = end;
+            clearInterval(timer);
+          }
+          setDisplayResult(start.toFixed(2)); // แสดงผลลัพธ์พร้อมกับทศนิยม 2 ตำแหน่ง
+        }, incrementTime);
+      }
+    }
+  }, [result]);
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -37,14 +72,14 @@ export function InsuranceForm() {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <div className="card p-4 shadow-sm animate-form">
-            <h2 className="text-center mb-4 animate-heading">
+          <div className="card p-5 shadow-sm animate-form">
+            <h2 style={{font:" 33px 'DBHeaventR', Arial, sans-serif",fontWeight:"bold",marginTop:-20}} className="text-center mb-4 animate-heading">
               Insurance Prediction Form
-            </h2>
+            </h2><hr></hr>
             <form onSubmit={handleSubmit}>
-              <div className="form-row">
+              <div className="form-row" style={{gap:6,justifyContent:"center",marginTop:10}}>
                 <div className="form-group col-md-6">
-                  <label>Age</label>
+                  <label style={{fontWeight:"bold"}}>Age</label>
                   <input
                     type="number"
                     className="form-control"
@@ -52,11 +87,12 @@ export function InsuranceForm() {
                     placeholder="Enter Age"
                     value={formData.age}
                     onChange={handleChange}
+                    min={0}
                     required
                   />
                 </div>
                 <div className="form-group col-md-6">
-                  <label>Gender</label>
+                  <label style={{fontWeight:"bold"}}>Gender</label>
                   <br />
                   <div className="form-check form-check-inline">
                     <input
@@ -110,21 +146,38 @@ export function InsuranceForm() {
                 </div>
               </div> */}
 
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label>BMI</label>
+              <div className="form-row" style={{gap:4,justifyContent:"center",marginTop:20}}>
+                <div className="form-group col-md-3">
+                  <label style={{fontWeight:"bold",marginRight:5}}>Height</label>
+                  <label>(cm)</label>
                   <input
                     type="number"
                     className="form-control"
-                    name="bmi"
-                    placeholder="BMI"
-                    value={formData.bmi}
+                    name="height"
+                    placeholder="height"
+                    value={formData.height}
                     onChange={handleChange}
+                    min={0}
                     required
                   />
                 </div>
+                <div className="form-group col-md-3">
+                  <label style={{fontWeight:"bold",marginRight:5}}>Weight</label>
+                  <label>(kg)</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="weight"
+                    placeholder="weight"
+                    value={formData.weight}
+                    onChange={handleChange}
+                    min={0}
+                    required
+                  />
+                </div>
+                
                 <div className="form-group col-md-6">
-                  <label>Number of Children</label>
+                  <label style={{fontWeight:"bold"}}>Number of Children</label>
                   <input
                     type="number"
                     className="form-control"
@@ -132,14 +185,15 @@ export function InsuranceForm() {
                     placeholder="Number of Children"
                     value={formData.children}
                     onChange={handleChange}
+                    min={0}
                     required
                   />
                 </div>
               </div>
 
-              <div className="form-row">
+              <div className="form-row" style={{gap:6,justifyContent:"center",marginTop:20}}>
                 <div className="form-group col-md-6">
-                  <label>Smoker</label>
+                  <label style={{fontWeight:"bold"}}>Smoker</label>
                   <br />
                   <div className="form-check form-check-inline">
                     <input
@@ -165,7 +219,7 @@ export function InsuranceForm() {
                   </div>
                 </div>
                 <div className="form-group col-md-6">
-                  <label>Region</label>
+                  <label style={{fontWeight:"bold"}}>Region</label>
                   <select
                     className="form-control"
                     name="region"
@@ -183,15 +237,16 @@ export function InsuranceForm() {
               </div>
 
               <button
+                style={{fontWeight:"bold",backgroundColor:'#3ed995',borderColor:'#3ed995'}}
                 type="submit"
                 className="btn btn-primary btn-block mt-4 animate-button"
               >
                 Submit
               </button>
             </form>
-            {result && (
-              <h2 className="text-center mt-4">
-                Predicted Insurance Charge: ${result}
+            {result && ( 
+              <h2 style={{font:" 25px 'DBHeaventR', Arial, sans-serif"}} className="text-center mt-4">
+                Predicted Insurance Charge: ${displayResult} 
               </h2>
             )}
           </div>
@@ -200,3 +255,4 @@ export function InsuranceForm() {
     </div>
   );
 }
+// | #checkbmi:{bmicheck}

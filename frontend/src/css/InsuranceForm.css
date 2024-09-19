@@ -1,3 +1,63 @@
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
+}
+
+.blog-footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 20px;
+  text-align: start;
+}
+
+footer {
+  padding-top: 0.5rem;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  display: block;
+}
+.h2-pop button{
+  font: 16px DBHeaventMd, Tahoma, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: #343434;
+  transform: translateY(0);
+  opacity: 1;
+}
+.h2-pop button:hover{
+	color: #ffffff;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+.b-nav a {
+  font: 22px DBHeaventMd, Tahoma, sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: #343434;
+  padding: 16px 14px;
+  transform: translateY(0);
+  opacity: 1;
+}
+.b-nav a:hover{
+	color: #3ed995;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+.b-nav a .desc {
+	font: 20px 'DBHeaventR', Arial, sans-serif;
+	display: none;
+}
+
 .form-container {
     max-width: 500px;
     margin: auto;
