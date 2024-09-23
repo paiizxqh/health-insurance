@@ -134,31 +134,30 @@ Follow these instructions to set up the project locally for development and test
 │
 ├── /frontend/                 # React frontend application
 │   ├── /node_modules/         # Node.js dependencies for frontend
-│   ├── /public/               # Public static files
+│   ├── /public/               # Public static files (HTML, icons, etc.)
 │   ├── /src/                  # Source files
 │   │   ├── /css/              # CSS for styling
-│   │   │   ├── InsuranceForm.css  # Styles for InsuranceForm component
+│   │   │   └── InsuranceForm.css   # Styles for the InsuranceForm component
 │   │   ├── /image/            # Image assets
 │   │   │   ├── Logo.png       # Application logo
-│   │   │   └── modal.png      # Additional modal images
+│   │   │   └── modal.png      # Modal-related image assets
 │   │   └── /pages/            # Main application pages
 │   │       ├── App.js         # Main application file
 │   │       ├── Footer.js      # Footer component
-│   │       └── InsuranceForm.js  # Insurance form component
+│   │       └── InsuranceForm.js   # Form for insurance input data
 │   ├── index.js               # Entry point for React app
-│   └── package.json           # Dependencies and project metadata for frontend
+│   └── package.json           # Project metadata and dependencies for frontend
 │
 ├── /backend/                  # Flask backend application
 │   ├── /venv/                 # Virtual environment for backend Python dependencies
 │   ├── /data_model/           # Directory for model and data files
 │   │   ├── COOP_Project.ipynb # Jupyter Notebook for model development
 │   │   └── insurance.csv      # Dataset for insurance charges
-│   ├── app.py                 # Flask main application file
-│   ├── final_poly_model.pkl   # Pretrained machine learning model for predictions
+│   ├── app.py                 # Flask main application file (API endpoints)
+│   ├── final_poly_model.pkl   # Pretrained machine learning model (prediction model)
 │   └── requirements.txt       # Python dependencies for backend
 │
-└── README.md                  # Documentation for the project
-
+└── README.md                  # Project documentation
 
 ## Contributing
 
