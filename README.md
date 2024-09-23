@@ -1,4 +1,4 @@
-# Health Insurance Premium Prediction Web Application
+# Health Insurance Prediction Web Application
 
 ## Project Overview
 
