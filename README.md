@@ -151,12 +151,13 @@ Follow these instructions to set up the project locally for development and test
 │
 ├── /backend/                  # Flask backend application
 │   ├── /venv/                 # Virtual environment for backend Python dependencies
-│   ├── /data_model/           # Directory for model and data files
-│   │   ├── COOP_Project.ipynb # Jupyter Notebook for model development
-│   │   └── insurance.csv      # Dataset for insurance charges
 │   ├── app.py                 # Flask main application file (API endpoints)
 │   ├── final_poly_model.pkl   # Pretrained machine learning model (prediction model)
 │   └── requirements.txt       # Python dependencies for backend
+│
+├──  /data_model/           # Directory for model and data files
+│   ├── COOP_Project.ipynb # Jupyter Notebook for model development
+│   └── insurance.csv      # Dataset for insurance charges
 │
 └── README.md                  # Project documentation
 ```
