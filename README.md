@@ -155,9 +155,9 @@ Follow these instructions to set up the project locally for development and test
 │   ├── final_poly_model.pkl   # Pretrained machine learning model (prediction model)
 │   └── requirements.txt       # Python dependencies for backend
 │
-├──  /data_model/           # Directory for model and data files
-│   ├── COOP_Project.ipynb # Jupyter Notebook for model development
-│   └── insurance.csv      # Dataset for insurance charges
+├──  /data_model/              # Directory for model and data files
+│   ├── COOP_Project.ipynb     # Jupyter Notebook for model development
+│   └── insurance.csv          # Dataset for insurance charges
 │
 └── README.md                  # Project documentation
 ```
